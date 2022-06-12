@@ -6,6 +6,8 @@
 
 2. Typography 
 3. Layout 
+     3.1 Home Page Layout
+4. Utilities 
 
 
 /*  ================
@@ -99,6 +101,8 @@ select {
     --ff-sec: "Comfortaa", sans-serif;
 
     --background: rgb(40, 75, 99);
+    --background-sec: rgb(60, 110, 113);
+    --background-ter: rgb(53, 53, 53);
 
     --clr-prim: rgb(217, 217, 217);
     --clr-sec: rgb(255, 255, 255);
@@ -144,7 +148,7 @@ p {
     3. layout 
     ============= */
 
-/* Home Page Layout */
+/* === 3.1 Home Page Layout === */
 
 body{
     background-color: var(--background);
@@ -159,4 +163,28 @@ body{
     max-width: 80vw;
     margin: 0 auto;
     padding: 2rem;
+}
+
+/*  =============
+    4. Utilities 
+    ============= */
+
+/* === 4.1 Buttons === */
+
+.btn {
+    font-size: 2rem;
+    font-family: var(--ff-sec);
+    padding: 1rem;
+    width: 30rem;
+    text-align: center;
+    margin-bottom: 1rem;
+    text-decoration: none;
+    color: var(--clr-sec);
+    background: var(--background-sec);
+    border-radius: 4px;
+}
+
+.btn:hover {
+    cursor: pointer;
+    background-color: var(--background-ter);
 }
