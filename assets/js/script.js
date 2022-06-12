@@ -7,19 +7,20 @@ document.addEventListener("DOMContentLoaded", function(){
 // Global Variables 
 
 const question = document.getElementById('question');
-const choices = document.getElementsByClassName('.choice-text');
+const choices = Array.from(document.getElementsByClassName('choice-text'));
 
 let currentQuestion = {};
+
 let acceptingAnswers = true;
+// set starting score
 let score = 0;
+// set starting position for questions 
 let questionCounter = 0;
+// create empty array for all available questions 
 let availableQuestions = [];
-
-const score_points = {
-    if 
-};
-
+// set maximum questions in survey before end
 const max_questions = 5;
+
 
 // Survey Questions 
 let questions = [
@@ -62,24 +63,62 @@ let questions = [
 
 
 
+
 // Functions 
-function startSurvey() {
+
+/**
+ * Set score and counter to 0, pull in values from questions variable 
+ * then call getNewQuestions Function
+ */
+startSurvey = () => {
     questionCounter = 0;
     score = 0;
-    availableQuestions = [...questions]
+    availableQuestions = [...questions];
     getNewQuestion();
 }
 
-function getNewQuestion() {
-    if(availableQuestions.lenght === 0 || questionCounter > max_questions)
-    
+/**
+ * Check if there are any availble questions, if none send to end page. 
+ * Otherwise increase question counter and pull in a new random question 
+ */
+
+getNewQuestion = () => {
+    if(availableQuestions.length === 0 || questionCounter > max_questions) {
     return window.location.assign('/end.html')
+    }
 
     questionCounter++;
     
-    const questionsIndex = Math.floor(Math.random() * availableQuestions.lenght);
+    const questionsIndex = Math.floor(Math.random() * availableQuestions.length);
     currentQuestion = availableQuestions[questionsIndex];
     question.InnerText = currentQuestion.question;
+
+    choices.forEach(choice => {
+        const number = choice.dataset ['number'];
+        choice.InnerText = currentQuestion['choice' + number]
+
+    })
+
+    availableQuestions.splice(questionsIndex, 1);
+
+    acceptingAnswers = true;
+}
+
+choices.forEach(choice => {
+    choice.addEventListener('click', e => {
+        if(!acceptingAnswers) return;
+
+        acceptingAnswers = false;
+        const selectedChoice = e.target;
+        const selectedAnswer = selectedChoice;
+
+        getNewQuestion();
+    })
+})
+
+
+calculateScore = num => {
+
 }
 
 
@@ -91,8 +130,5 @@ function storeAnswer() {
 
 }
 
-function calculateScore() {
 
-}
-
-
+startSurvey();
