@@ -7,6 +7,7 @@
 2. Typography 
 3. Layout 
      3.1 Home Page Layout
+     3.2 Survey Page Layout
 4. Utilities 
 
 
@@ -174,6 +175,33 @@ body{
 .flex-center {
     justify-content: center;
     align-items: center;
+}
+
+/* === 3.2 Survey Page Layout === */
+
+.answer-container {
+    display: flex;
+    margin-bottom: 1rem;
+    font-size: var(--fs-500);
+    width: 100%;
+    min-width: 80vw;
+    border-radius: 4px;
+    background-color: var(--background-sec);
+}
+
+.answer-container:hover {
+    cursor: pointer;
+    background-color: var(--background-ter);
+}
+
+.choice-num {
+    display: flex;
+    padding: 1.5rem 2rem;
+}
+
+.choice-text {
+    padding: 1.5rem;
+    width: 100%;
 }
 
 /*  =============
